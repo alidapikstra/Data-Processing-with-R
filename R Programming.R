@@ -89,3 +89,53 @@ for(i in 1:5){
 
 5:10
 
+x <- rnorm(1)
+if (x > 1){
+  answer <- "Greater than 1"
+} else if(x >= -1){
+  answer <- "Between -1 and 1"
+} else{
+  answer <- "Less than -1"
+}
+
+MyFirstVector <- c(3, 45, 56, 732)
+MyFirstVector
+is.numeric(MyFirstVector)
+is.integer(MyFirstVector)
+is.double(MyFirstVector)
+
+V2 <- c(3L, 12L, 234L, 0L)
+is.numeric(V2)
+is.integer(V2)
+is.double(V2)
+
+V3 <- c("a", "B23", "Hello")
+V3
+is.character(V3)
+
+seq(1,15)
+seq(1,15,2)
+z <- seq(1,15,4)
+z
+
+rep(3,50)
+d <- rep(3,50)
+d
+rep("a",5)
+
+x <- c(80,20)
+y <- rep(x,10)
+y
+
+x <- c(1,123,534,13,4) #combine
+y <- seq(201,250,11)   #sequence
+z <- rep("Hi!",3)      #replicate
+
+w <- c("a", "b", "c", "d", "e")
+w
+w[1]
+w[2]
+w[-1]
+v <- w[-3]
+v
+w[1:3]
