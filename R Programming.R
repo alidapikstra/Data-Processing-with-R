@@ -423,3 +423,38 @@ myplot <- function(rows){
   legend("bottomleft", inset=0.01, legend=Players[1:3], col=c(1:4,6), pch=15:18, horiz=F)
 }
 myplot(1:9)
+
+#Import a file manually
+stats <- read.csv(file.choose())
+summary(stats)
+
+#---------------Basic Operations with a DF
+stats[1:10,] #subsetting
+is.data.frame(stats[1,]) #no need for drop=F (like with matrices)
+is.data.frame(stats[,1])
+is.data.frame(stats[,1,drop=F])
+#multiply columns
+head(stats)
+stats$Birth.rate * stats$Internet.users
+#add column
+stats$MyCalc <- stats$Birth.rate * stats$Internet.users
+#remove a column
+stats$MyCalc <- NULL
+
+#---------------Filtering Data Frames
+filter <- stats$Internet.users < 2
+stats[filter,]
+
+stats[stats$Birth.rate < 40,]
+stats[stats$Birth.rate < 40 & stats$Internet.users < 2,]
+stats [stats$Income.Group == "High income",]
+stats [stats$Country.Name == "Malta",]
+
+#---------------qplot
+library(ggplot2)
+?qplot
+qplot(data=stats, x=Internet.users)
+qplot(data=stats, x=Internet.users, y=Birth.rate)
+qplot(data=stats, x=Internet.users, y=Birth.rate, size=I(3), colour=I("blue"))
+qplot(data=stats, x=Internet.users, y=Birth.rate, geom="boxplot")
+
