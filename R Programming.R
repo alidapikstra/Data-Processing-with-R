@@ -502,3 +502,14 @@ qplot(data=merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), sha
 #3. Title
 qplot(data=merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), shape=I(19),
       alpha=I(0.6), main="Birth Rate vs Internet Users")
+
+Movie_Ratings <- read.csv("~/Documents/Udemy_courses/R_Programming/Movie_Ratings.csv")
+View(Movie_Ratings)
+
+attach(Movie_Ratings)
+head(Movie_Ratings)
+colnames(Movie_Ratings) <- c("Film", "Genre", "CriticRating", "AudienceRating", "Budgetmillions", "Year")
+colnames(Movie_Ratings) 
+Movie_Ratings
+head(Movie_Ratings)
+str(Movie_Ratings)
