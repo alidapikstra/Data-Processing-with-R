@@ -583,4 +583,16 @@ r + geom_point(aes(colour=Genre))
 #Setting
 r + geom_point(colour="Darkblue")
 
-  
+#---------- Histograms and Density Charts
+
+s <- ggplot(data=Movie_Ratings, aes(x=Budgetmillions))
+s + geom_histogram(binwidth=10)
+
+#add colour
+s + geom_histogram(binwidth=10, aes(fill=Genre))
+#add a border
+s + geom_histogram(binwidth=10, aes(fill=Genre), colour="Black")
+
+#density chart
+s + geom_density(aes(fill=Genre))
+s + geom_density(aes(fill=Genre), position="stack")
