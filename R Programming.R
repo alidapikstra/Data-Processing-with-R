@@ -503,6 +503,13 @@ qplot(data=merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), sha
 qplot(data=merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), shape=I(19),
       alpha=I(0.6), main="Birth Rate vs Internet Users")
 
+#--------------------------------------
+
+# Advanced Visualization With GGPlot2
+
+#-----Factor
+
+
 Movie_Ratings <- read.csv("~/Documents/Udemy_courses/R_Programming/Movie_Ratings.csv")
 View(Movie_Ratings)
 
@@ -513,3 +520,67 @@ colnames(Movie_Ratings)
 Movie_Ratings
 head(Movie_Ratings)
 str(Movie_Ratings)
+summary(Movie_Ratings)
+
+factor(Movie_Ratings$Year)
+Movie_Ratings$Year <- factor(Movie_Ratings$Year)
+
+summary (Movie_Ratings)
+
+#----------- Aesthetics
+library(ggplot2)
+ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating))
+
+#add geometry
+ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating)) + 
+  geom_point()
+
+#add colour
+ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating, colour=Genre)) + 
+  geom_point()
+
+#add size
+ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating, 
+                               colour=Genre, size=Budgetmillions)) + 
+  geom_point()
+
+#------------Plotting With Layers
+
+p <- ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating, 
+                                    colour=Genre, size=Budgetmillions))
+#point
+p + geom_point()
+
+#lines
+p + geom_line()
+
+#multiple layers
+p + geom_point() + geom_line()
+p + geom_line() + geom_point()
+
+#----------- Overriding Aesthetics
+
+q <- ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating, 
+                                       colour=Genre, size=Budgetmillions))
+#add geom layer
+q + geom_point()
+
+#overriding aes
+q + geom_point(aes(colour=Budgetmillions))
+q + geom_point(aes(x=Budgetmillions)) + 
+  xlab("Budget Millions $$$")
+
+#reduce line size
+q + geom_line(size=1) + geom_point()
+
+#-----------Mapping vs Setting
+
+r <- ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating))
+
+#Add colour
+#1 Mapping
+r + geom_point(aes(colour=Genre)) 
+#Setting
+r + geom_point(colour="Darkblue")
+
+  
