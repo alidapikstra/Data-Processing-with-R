@@ -596,3 +596,30 @@ s + geom_histogram(binwidth=10, aes(fill=Genre), colour="Black")
 #density chart
 s + geom_density(aes(fill=Genre))
 s + geom_density(aes(fill=Genre), position="stack")
+
+library(ggplot2)
+#-------- Layers
+t <- ggplot(data=Movie_Ratings, aes(x=AudienceRating))
+t
+t + geom_histogram(binwidth=10,
+                   fill="White", colour="Blue")
+#or
+t <- ggplot(data=Movie_Ratings)
+t
+t + geom_histogram(binwidth=10,
+                   aes(x=AudienceRating),
+                   fill="White", colour="Blue")
+
+#--------------Statistical Transformations
+
+u <- ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating,
+                                    colour=Genre))
+u + geom_point() + geom_smooth(fill=NA)
+
+#boxplots
+u <- ggplot(data=Movie_Ratings, aes(x=Genre, y=AudienceRating,
+                                    colour=Genre))
+u + geom_boxplot(size=1.2)
+u + geom_boxplot(size=1.2) + geom_point()
+u + geom_boxplot(size=1.2) + geom_jitter()
+u + geom_jitter() + geom_boxplot(size=1.2, alpha=0.5)
