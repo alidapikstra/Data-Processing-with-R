@@ -658,3 +658,26 @@ w + geom_point(size=2) +
 w + geom_point(aes(size=Budgetmillions)) +
   geom_smooth() +
   facet_grid(Genre~Year)
+
+#----------Coordinates
+
+library(ggplot2)
+m <- ggplot(data=Movie_Ratings, aes(x=CriticRating, y=AudienceRating,
+                                    size=Budgetmillions,
+                                    colour=Genre))
+m + geom_point()
+
+#limits
+m + geom_point() +
+  xlim(50,100) +
+  ylim(50,100)
+
+#zoojm
+n <- ggplot(data=Movie_Ratings, aes(x=Budgetmillions))
+n + geom_histogram(binwidth=10, aes(fill=Genre), colour="Black") +
+  coord_cartesian(ylim=c(0,50))
+
+w + geom_point(aes(size=Budgetmillions)) +
+  geom_smooth() +
+  facet_grid(Genre~Year)
+coord_cartesian(ylim=c(0,100))
