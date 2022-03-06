@@ -672,7 +672,7 @@ m + geom_point() +
   xlim(50,100) +
   ylim(50,100)
 
-#zoojm
+#zoom
 n <- ggplot(data=Movie_Ratings, aes(x=Budgetmillions))
 n + geom_histogram(binwidth=10, aes(fill=Genre), colour="Black") +
   coord_cartesian(ylim=c(0,50))
@@ -681,3 +681,53 @@ w + geom_point(aes(size=Budgetmillions)) +
   geom_smooth() +
   facet_grid(Genre~Year)
 coord_cartesian(ylim=c(0,100))
+
+library(ggplot2)
+
+#----------- Theme
+
+o <- ggplot(data=Movie_Ratings, aes(x=Budgetmillions))
+h <- o + geom_histogram(binwidth=10, aes(fill=Genre), colour="Black")
+h
+
+#axes labels
+h + 
+  xlab("Money Axis") +
+  ylab("Number of Movies") +
+  theme(axis.title.x = element_text(colour="DarkGreen", size=30),
+     axis.title.y = element_text(colour="Red", size=30),
+     axis.text.x = element_text(size=20),
+     axis.text.y = element_text(size=20))
+
+#legend formatting
+h + 
+  xlab("Money Axis") +
+  ylab("Number of Movies") +
+  theme(axis.title.x = element_text(colour="DarkGreen", size=30),
+        axis.title.y = element_text(colour="Red", size=30),
+        axis.text.x = element_text(size=20),
+        axis.text.y = element_text(size=20),
+        
+        legend.title = element_text(size=30),
+        legend.text = element_text(size=20),
+        legend.position = c(1,1),
+        legend.justification = c(1,1))
+       
+#title
+h + 
+  xlab("Money Axis") +
+  ylab("Number of Movies") +
+  ggtitle("Movie budget Distribution") +
+  theme(axis.title.x = element_text(colour="DarkGreen", size=30),
+        axis.title.y = element_text(colour="Red", size=30),
+        axis.text.x = element_text(size=20),
+        axis.text.y = element_text(size=20),
+        
+        legend.title = element_text(size=30),
+        legend.text = element_text(size=20),
+        legend.position = c(1,1),
+        legend.justification = c(1,1),
+        
+        plot.title = element_text(colour="DarkBlue",
+        size=40, 
+        family = "Courier"))
